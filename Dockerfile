@@ -11,5 +11,3 @@ RUN apt-get clean -q && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /root
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv /root/composer.phar /usr/local/bin/composer
-
-# just an extra comment!
