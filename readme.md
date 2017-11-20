@@ -21,12 +21,16 @@ This image is optimized for use with **Laravel 5.4**
         container_name: laravel
         environment:
           VIRTUAL_HOST: example.nl
+          VIRTUAL_PROTO: https
+          VIRTUAL_PORT: 443
           LETSENCRYPT_HOST: example.nl
           LETSENCRYPT_EMAIL: example@example.nl
         depends_on:
           - database
         volumes:
           - "/var/www/laravel:/var/www/app"
+        volumes_from:
+          - "nginx-proxy"
 
       database:
         image: mysql
