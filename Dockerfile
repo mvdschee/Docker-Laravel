@@ -11,6 +11,11 @@ RUN apt-get clean -q && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /etc/nginx/snippets/
 COPY security.conf security.conf
 
+# Configure nginx file for domain
+WORKDIR /etc/my_init.d
+COPY bash.sh 02_laravel.sh
+RUN chmod +x 02_laravel.sh
+
 # Install composer
 WORKDIR /root
 RUN curl -sS https://getcomposer.org/installer | php
